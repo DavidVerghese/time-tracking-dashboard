@@ -4,9 +4,9 @@ import Sidebar from './Sidebar/Sidebar'
 import tasksData from './data.json';
 
 export default function Home() {
-	console.log('here',tasksData);
+	
 	return (
-		<main className="sm:flex sm:flex-row h-screen">
+		<main className="page sm:flex sm:flex-row h-screen">
 		<Sidebar/>
 		<Grid tasksData={tasksData} />
 		</main>
