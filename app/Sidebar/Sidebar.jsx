@@ -1,3 +1,4 @@
+import Link from 'next/link'
 
 export default function Sidebar() {
 	return (
@@ -6,9 +7,10 @@ export default function Sidebar() {
         <img src="/images/image-jeremy.png"/>
 			</div>
 			<div className="flex-col">
-				<p>Daily</p>
-				<p>Weekly</p>
-				<p>Monthly</p>
+			<Link href="/"><p>Home</p></Link>
+				<Link href="/daily"><p>Daily</p></Link>
+				<Link href="/weekly"><p>Weekly</p></Link>
+				<Link href="/monthly"><p>Monthly</p></Link>
 			</div>
 		</div>
 	)
