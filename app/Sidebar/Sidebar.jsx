@@ -7,7 +7,6 @@ export default function Sidebar() {
         <img src="/images/image-jeremy.png"/>
 			</div>
 			<div className="flex-col">
-			<Link href="/"><p>Home</p></Link>
 				<Link href="/daily"><p>Daily</p></Link>
 				<Link href="/weekly"><p>Weekly</p></Link>
 				<Link href="/monthly"><p>Monthly</p></Link>

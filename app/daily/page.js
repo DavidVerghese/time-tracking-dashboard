@@ -1,5 +1,6 @@
+"use client"
 import Grid from "../Grid/Grid";
 
 export default function daily(){
-    return (<Grid/>)
+  return (<Grid timeframe={"daily"} />)
 }
