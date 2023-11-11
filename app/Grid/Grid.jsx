@@ -1,4 +1,3 @@
-"use client"
 import Category from "../Category/Category";
 import tasksData from '../data.json'
 
