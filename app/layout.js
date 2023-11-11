@@ -1,7 +1,5 @@
-import { Inter } from 'next/font/google'
 import './globals.css'
 import Sidebar from './Sidebar/Sidebar'
-// const inter = Inter({ subsets: ['latin'] })
 import { Rubik } from 'next/font/google'
 
 const rubik = Rubik ({
@@ -17,12 +15,12 @@ export const metadata = {
 export default function RootLayout({ children }) {
 	return (
 		<html lang="en" className={rubik.className}>
-		<body>
-			<main className="page sm:flex sm:flex-row h-screen">
-				<Sidebar />
-				{children}
-			</main>
-		</body>
+			<body>
+				<main className="page sm:flex sm:flex-row h-screen">
+					<Sidebar />
+					{children}
+				</main>
+			</body>
 		</html>
 	)
 }
