@@ -1,6 +1,6 @@
 import Category from "../Category/Category";
-
-export default function Grid({ tasksData }) {
+import tasksData from '../data.json'
+export default function Grid({  }) {
 
   const timeframe = "monthly";
 
