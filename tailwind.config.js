@@ -6,7 +6,7 @@ module.exports = {
 		'./app/**/*.{js,ts,jsx,tsx,mdx}',
 	],
 	theme: {
-		extend: {
+    extend: {
 		colors: {
 			'blue': 'hsl(246, 80%, 60%)',
 			'light-red-work': 'hsl(15, 100%, 70%)',
