@@ -25,11 +25,11 @@ export default function Category({ category, timeframe, key }) {
 			</div>
 			<div className="hover:bg-less-dark-blue bg-dark-blue h-4/5 p-5 rounded-xl">
 				<div className="flex justify-between">
-					<h2>{category.title}</h2>
+					<h2 className="">{category.title}</h2>
 					<svg width="21" height="5" xmlns="http://www.w3.org/2000/svg"><path d="M2.5 0a2.5 2.5 0 1 1 0 5 2.5 2.5 0 0 1 0-5Zm8 0a2.5 2.5 0 1 1 0 5 2.5 2.5 0 0 1 0-5Zm8 0a2.5 2.5 0 1 1 0 5 2.5 2.5 0 0 1 0-5Z" fill="#BBC0FF" fill-rule="evenodd"/></svg>
 				</div>
 				<p className="text-4xl font-bold my-3">{category.timeframes[timeframe].current} hrs</p>
-				<p className="text-desaturated-blue">Last - {category.timeframes[timeframe].previous}hrs</p>
+				<p className="text-medium-emphasis ">Last - {category.timeframes[timeframe].previous}hrs</p>
 			</div>
 		</div>
 	)
