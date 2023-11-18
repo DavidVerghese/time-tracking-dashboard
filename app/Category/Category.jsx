@@ -68,7 +68,7 @@ export default function Category({ category, timeframe, key }) {
       key={key}
       className={`${
         colorMap[category.title]
-      } my-7 sm:my-3 rounded-xl flex flex-col justify-end max-sm:h-48 max-h-64`}
+      } my-7 sm:my-3 rounded-xl flex flex-col justify-end max-sm:h-56 max-h-64`}
     >
       <div className="mr-5 ml-auto h-1/5">{iconMap[category.title]}</div>
       <div className="hover:bg-less-dark-blue bg-dark-blue pt-5 px-5 pb-5 rounded-xl">
@@ -84,10 +84,10 @@ export default function Category({ category, timeframe, key }) {
             />
           </svg>
         </div>
-        <p className="text-4xl font-bold my-3">
+        <p className="text-5xl my-3">
           {category.timeframes[timeframe].current} hrs
         </p>
-        <p className="text-medium-emphasis ">
+        <p className="text-medium-emphasis">
           Last - {category.timeframes[timeframe].previous}hrs
         </p>
       </div>
