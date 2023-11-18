@@ -64,7 +64,7 @@ export default function Category({ category, timeframe, key }) {
   };
 
   return (
-    <div
+    <section
       key={key}
       className={`${
         colorMap[category.title]
@@ -91,6 +91,6 @@ export default function Category({ category, timeframe, key }) {
           Last - {category.timeframes[timeframe].previous}hrs
         </p>
       </div>
-    </div>
+    </section>
   );
 }

@@ -9,7 +9,7 @@ export default function Sidebar() {
 		return pathname == timeframe ? `font-semibold text-regular-emphasis` : `text-medium-emphasis`
 	}
 	return (
-		<div className="sidebar bg-dark-blue sm:max-w-[250px] sm:h-4/5 m-4 rounded-xl">
+		<header className="sidebar bg-dark-blue sm:max-w-[250px] sm:h-4/5 m-4 rounded-xl">
 			<div className="bg-blue h-3/5 rounded-xl p-6">
 				<Image
 					src={"/images/image-jeremy.png"}
@@ -21,7 +21,7 @@ export default function Sidebar() {
 				<p className="mt-5">Report for</p>
 				<h1 className="text-4xl">Jeremy Robson</h1>
 			</div>
-			<div className="flex-col p-6">
+			<nav className="flex-col p-6">
 				<Link id="daily" href="/daily">
 				<p className={`my-3 text-medium-emphasis ${linkColor("/daily")}`}>
 					Daily
@@ -33,7 +33,7 @@ export default function Sidebar() {
 				<Link href="/monthly">
 				<p className={`my-3 text-medium-emphasis ${linkColor("/monthly")}`}>Monthly</p>
 				</Link>
-			</div>
-		</div>
+			</nav>
+		</header>
 	);
 }
