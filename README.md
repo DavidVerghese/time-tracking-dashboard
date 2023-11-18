@@ -29,23 +29,41 @@ Users should be able to:
 
 ### Screenshot
 
+
+
 ### Links
 
-- Solution URL: 
-- Live Site URL: 
+- Solution URL: https://github.com/DavidVerghese/time-tracking-dashboard
+- Live Site URL: https://time-tracking-dashboard-phi-five.vercel.app/daily 
 
 ## My process
 
 ### Built with
 
+- NextJS 
+- Tailwind CSS
+
 ### What I learned
 
-### Continued development
-
+- Dynamic params in NextJS
+- Tabs 
+- Accessibility 
 
 ### Useful resources
+
+- NextJS docs - https://nextjs.org/docs
+- Tailwind CSS docs - https://tailwindcss.com/docs
 
 
 ## Author
 
-## Acknowledgments
+- Website - [David Verghese](https://davidverghese.surge.sh/)
+- Frontend Mentor - [@davidjverghese](https://www.frontendmentor.io/profile/davidjverghese)
+
+## Contributing
+
+Pull requests are welcome.
+
+## License
+
+[MIT](https://choosealicense.com/licenses/mit/)
