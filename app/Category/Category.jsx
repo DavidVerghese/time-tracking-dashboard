@@ -68,10 +68,10 @@ export default function Category({ category, timeframe, key }) {
       key={key}
       className={`${
         colorMap[category.title]
-      } my-7 sm:my-3 rounded-xl flex flex-col justify-end max-sm:h-48`}
+      } my-7 sm:my-3 rounded-xl flex flex-col justify-end max-sm:h-48 max-h-64`}
     >
       <div className="mr-5 ml-auto h-1/5">{iconMap[category.title]}</div>
-      <div className="hover:bg-less-dark-blue bg-dark-blue h-4/5 p-5 rounded-xl">
+      <div className="hover:bg-less-dark-blue bg-dark-blue pt-5 px-5 pb-5 rounded-xl">
         <div className="flex justify-between">
           <a href="#">
             <h2 className="">{category.title}</h2>
