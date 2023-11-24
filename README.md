@@ -43,6 +43,10 @@ Mobile View
 
 ## My process
 
+When building webpages, I normally work on adding text, pictures, and icons to the webpage before I work on the color, responsitivy and page layout. For this website, I took the opposite approach: I worked on color, page layout and responsitivity, using solid blocks of color, before adding  
+Made it responsive 
+Then worked on pulling in data from file 
+
 ### Built with
 
 - NextJS 
@@ -50,9 +54,9 @@ Mobile View
 
 ### What I learned
 
-- Dynamic params in NextJS
-- Tabs 
-- Accessibility 
+- Dynamic routes in NextJS: the diff timeframes
+- Dynamic params in NextJS: the sidebar that matches segments 
+- Accessibility / Tabs
 
 ### Useful resources
 
