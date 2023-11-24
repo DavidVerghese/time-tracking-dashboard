@@ -11,10 +11,11 @@ This is a solution to the [Time tracking dashboard challenge on Frontend Mentor]
 - [My process](#my-process)
   - [Built with](#built-with)
   - [What I learned](#what-i-learned)
-  - [Continued development](#continued-development)
   - [Useful resources](#useful-resources)
+  - [Continued Learning](#continued-learning)
 - [Author](#author)
-- [Acknowledgments](#acknowledgments)
+- [Contributing](#contributing)
+- [License](#license)
 
 
 ## Overview
@@ -44,11 +45,11 @@ Mobile View
 
 ## My process
 
-When building webpages, I normally work on adding text, pictures, and icons to the webpage before I work on the color, responsitivy and page layout. For this website, I took the opposite approach: I worked on color, page layout and responsitivity, using solid blocks of color, before adding in the text, pictures, and icons. 
+When building webpages, I normally work on adding text, pictures, and icons to the webpage before I work on the color, responsitivy and page layout. For this website, I took the opposite approach: I first worked on color, page layout and responsitivity, using solid blocks of color, before adding in the text, pictures, and icons. 
 
 ![website in its earlier, simplified state](solid-colors.png)
 
-I was inspired by the popular web development Youtube, Kevin Powell. I believe this approach enabled me to complete this project faster. 
+I was inspired by the popular web development Youtube, Kevin Powell. I believe this approach enabled me to complete this project faster, and I will use it in my next Frontend mentor challenge.
 
 ### Built with
 
@@ -57,15 +58,18 @@ I was inspired by the popular web development Youtube, Kevin Powell. I believe t
 
 ### What I learned
 
-- Dynamic routes in NextJS: the diff timeframes
-- Dynamic params in NextJS: the sidebar that matches segments 
-- Accessibility / Tabs
+- Dynamic routes: The three webpages for each timeframe (daily, weekly, and monthly) all use the same React component. I use the URL path to figure out the user's desired timeframe, and search the database for information about that timeframe. Eg if the URL path is /daily, the web app will search the database for the 'daily' timeframe. 
+
+- Accessibility: In order to improve accessibility, I put links in each card. Although the links are non functional, they enable a user to navigate between different cards with the tab button.
 
 ### Useful resources
 
 - NextJS docs - https://nextjs.org/docs
 - Tailwind CSS docs - https://tailwindcss.com/docs
 
+### Continued Learning
+
+I might add in the ability to add in custom timeframes, such as 'bimonthly', 'hourly', etc. 
 
 ## Author
 

@@ -32,7 +32,7 @@ export default function Sidebar() {
 				</Link>
 				<Link href="/monthly">
 				<p className={`my-3 text-medium-emphasis ${linkColor("/monthly")}`}>Monthly</p>
-				</Link>
+        </Link>
 			</nav>
 		</header>
 	);
