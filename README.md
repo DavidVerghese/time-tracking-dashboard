@@ -44,11 +44,11 @@ Mobile View
 
 ## My process
 
-When building webpages, I normally work on adding text, pictures, and icons to the webpage before I work on the color, responsitivy and page layout. For this website, I took the opposite approach: I worked on color, page layout and responsitivity, using solid blocks of color, before adding in the text, pictures, and icons. I was inspired by the popular web development Youtube, Kevin Powell. I believe this approach enabled to complete this project faster. 
+When building webpages, I normally work on adding text, pictures, and icons to the webpage before I work on the color, responsitivy and page layout. For this website, I took the opposite approach: I worked on color, page layout and responsitivity, using solid blocks of color, before adding in the text, pictures, and icons. 
 
-Development
+![website in its earlier, simplified state](solid-colors.png)
 
-![website in development](solid-colors.png)
+I was inspired by the popular web development Youtube, Kevin Powell. I believe this approach enabled me to complete this project faster. 
 
 ### Built with
 
