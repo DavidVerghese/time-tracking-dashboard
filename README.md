@@ -32,6 +32,7 @@ Users should be able to:
 Desktop View
 
 ![desktop view](desktop-view.png)
+
 Mobile View
 
 ![mobile view](mobile-view.png)
@@ -43,9 +44,11 @@ Mobile View
 
 ## My process
 
-When building webpages, I normally work on adding text, pictures, and icons to the webpage before I work on the color, responsitivy and page layout. For this website, I took the opposite approach: I worked on color, page layout and responsitivity, using solid blocks of color, before adding  
-Made it responsive 
-Then worked on pulling in data from file 
+When building webpages, I normally work on adding text, pictures, and icons to the webpage before I work on the color, responsitivy and page layout. For this website, I took the opposite approach: I worked on color, page layout and responsitivity, using solid blocks of color, before adding in the text, pictures, and icons. I was inspired by the popular web development Youtube, Kevin Powell. I believe this approach enabled to complete this project faster. 
+
+Development
+
+![website in development](solid-colors.png)
 
 ### Built with
 
