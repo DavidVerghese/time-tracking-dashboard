@@ -19,6 +19,8 @@ interface CategoryProps {
   timeframe: string;
   key: string;
 }
+
+
 export default function Category({ category, timeframe, key }: CategoryProps) {
   const colorMap = {
     Work: "bg-light-red-work",

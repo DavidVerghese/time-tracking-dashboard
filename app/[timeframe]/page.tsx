@@ -1,7 +1,13 @@
 import Grid from "../Grid/Grid";
 import GlobalError from "./error";
 
-export async function generateMetadata({ params }) {
+type metadataProps = {
+  params: {
+    timeframe: string;
+  }
+}
+
+export async function generateMetadata({ params }: metadataProps) {
   // read route params
   const timeframe = params.timeframe
   // fetch data
@@ -11,7 +17,7 @@ export async function generateMetadata({ params }) {
 }
 
 export default function timeTracker({ params }) {
-  const acceptableTimeFrames = ['daily', 'weekly', 'monthly'];
+  const acceptableTimeFrames : Array<string> = ['daily', 'weekly', 'monthly'];
   if (acceptableTimeFrames.includes(params.timeframe)) {
     return (<Grid timeframe={params.timeframe} />)
   }
