@@ -1,4 +1,27 @@
-export default function Category({ category, timeframe, key }) {
+interface CategoryProps {
+  category: {
+    title: string;
+    timeframes: {
+      daily: {
+        current: number;
+        previous: number;
+      };
+      weekly: {
+        current: number;
+        previous: number;
+      };
+      monthly: {
+        current: number;
+        previous: number;
+      };
+    };
+  };
+  timeframe: string;
+  key: string;
+}
+
+
+export default function Category({ category, timeframe, key }: CategoryProps) {
   const colorMap = {
     Work: "bg-light-red-work",
     Play: "bg-soft-blue-play",
@@ -62,7 +85,6 @@ export default function Category({ category, timeframe, key }) {
       </svg>
     ),
   };
-
   return (
     <section
       key={key}
