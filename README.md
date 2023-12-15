@@ -67,12 +67,6 @@ I was inspired by the popular web development Youtube, Kevin Powell. I believe t
 
 - Accessibility: In order to improve accessibility, I put links in each card. Although the links are non functional, they enable a user to navigate between different cards with the tab button.
 
-<!-- TODO  -->
-- Dynamic page titles:
-
-<!-- TODO  -->
-- Typescript:
-
 ### Useful resources
 
 - NextJS docs - https://nextjs.org/docs

@@ -1,4 +1,4 @@
-import Grid from "../Grid/Grid";
+import Grid from "../../Grid/Grid";
 import GlobalError from "./error";
 
 type metadataProps = {
