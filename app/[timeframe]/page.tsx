@@ -24,5 +24,4 @@ export default function timeTracker({ params }) {
   else {
     return <GlobalError/>
   }
-	return <div>Invalid</div>
 }
