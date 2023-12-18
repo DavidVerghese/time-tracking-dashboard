@@ -21,6 +21,7 @@ interface FormData {
 		};
 	};
 	color: string;
+	image?: string;
 };
 
 export default function addCategory(){
@@ -40,7 +41,8 @@ export default function addCategory(){
 				previous: 0
 			}
 		},
-		color: ''
+		color: '',
+		image: ''
 	});
 
 	function handleInputChange(event: React.ChangeEvent<HTMLInputElement>) {
@@ -93,6 +95,21 @@ export default function addCategory(){
 			<Timeframe timeframe="weekly" formData={formData} handleTimeframeInputChange={handleTimeframeInputChange}	/>
 			<Timeframe timeframe="monthly" formData={formData} handleTimeframeInputChange={handleTimeframeInputChange}	/>
 			<Dropdown value={formData.color} onChange={handleSelectChange} />
+			<div className="md:w-1/3">
+				<label htmlFor="Image" className="block text-gray-500 font-bold md:text-right mb-1 md:mb-0 pr-4">
+					Upload an image (optional)
+				</label>
+			</div>
+			<div className="md:w-2/3">
+				<input
+					className="bg-gray-200 appearance-none border-2 border-gray-200 rounded w-full py-2 px-4 text-gray-700 leading-tight focus:outline-none focus:bg-white focus:border-purple-500"
+					id="image"
+					name="image"
+					type="text"
+					value={formData.image}
+					onChange={handleInputChange}
+				/>
+			</div>
 			<button className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded" onClick={()=>console.log(formData)} type="submit">Submit</button>
 		</form>
 	)
