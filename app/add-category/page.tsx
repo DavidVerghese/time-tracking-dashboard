@@ -20,6 +20,7 @@ interface FormData {
 			previous: number;
 		};
 	};
+	color: string;
 };
 
 export default function addCategory(){
@@ -38,10 +39,15 @@ export default function addCategory(){
 				current: 0,
 				previous: 0
 			}
-		}
+		},
+		color: ''
 	});
 
 	function handleInputChange(event: React.ChangeEvent<HTMLInputElement>) {
+		const { name, value } = event.target;
+		setFormData({ ...formData, [name]: value });
+	}
+	function handleSelectChange(event: React.ChangeEvent<HTMLSelectElement>) {
 		const { name, value } = event.target;
 		setFormData({ ...formData, [name]: value });
 	}
@@ -86,8 +92,8 @@ export default function addCategory(){
 			<Timeframe timeframe="daily" formData={formData} handleTimeframeInputChange={handleTimeframeInputChange}	/>
 			<Timeframe timeframe="weekly" formData={formData} handleTimeframeInputChange={handleTimeframeInputChange}	/>
 			<Timeframe timeframe="monthly" formData={formData} handleTimeframeInputChange={handleTimeframeInputChange}	/>
-			<Dropdown/>
-			<button onClick={()=>console.log(formData)} type="submit">Submit</button>
+			<Dropdown value={formData.color} onChange={handleSelectChange} />
+			<button className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded" onClick={()=>console.log(formData)} type="submit">Submit</button>
 		</form>
 	)
 }
