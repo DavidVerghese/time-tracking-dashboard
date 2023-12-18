@@ -9,7 +9,7 @@ interface DropdownProps {
 export default function Dropdown({ value, onChange }: DropdownProps) {
   return (
     <>
-      <label htmlFor="colors" className="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Select an option</label>
+      <label htmlFor="colors" className="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Select a color</label>
       <select
         value={value}
         name="color"

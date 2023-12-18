@@ -24,8 +24,8 @@ interface FormData {
 	image?: string;
 };
 
-export default function addCategory(){
-	const [formData, setFormData] = useState<FormData>({
+export default function addCategory() {
+		const [formData, setFormData] = useState<FormData>({
 		title: '',
 		timeframes: {
 			daily: {
@@ -71,47 +71,70 @@ export default function addCategory(){
 	  }
 
 	return (
-		// https://v1.tailwindcss.com/components/forms
-		<form className="w-full max-w-sm" onSubmit={handleSubmit}>
-			 <div className="md:flex md:items-center mb-6">
-				<div className="md:w-1/3">
-					<label htmlFor="title" className="block text-gray-500 font-bold md:text-right mb-1 md:mb-0 pr-4">
-						Title
-					</label>
+	  <>
+		<div className="flex min-h-full flex-1 flex-col px-6">
+		  <div className="sm:mx-auto sm:w-full sm:max-w-sm">
+			<h2 className="mt-10 text-center text-2xl font-bold leading-9 tracking-tight">
+			  Add a new category
+			</h2>
+		  </div>
+
+		  <div className="mt-10 sm:mx-auto sm:w-full sm:max-w-sm">
+			<form className="space-y-6" action="#" method="POST">
+
+			  <div>
+				<label htmlFor="title" className="block text-sm font-medium leading-6">
+				 	Title
+				</label>
+				<div className="mt-2">
+				  <input
+					id="title"
+					name="title"
+					type="text"
+					value={ formData.title}
+					onChange={handleInputChange}
+					required
+					className="block w-full rounded-md border-0 py-1.5 shadow-sm ring-1 ring-inset ring-gray-300 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm text-black sm:leading-6"
+				  />
 				</div>
-				<div className="md:w-2/3">
-					<input
-						className="bg-gray-200 appearance-none border-2 border-gray-200 rounded w-full py-2 px-4 text-gray-700 leading-tight focus:outline-none focus:bg-white focus:border-purple-500"
-						id="title"
-						name="title"
-						type="text"
-						value={formData.title}
-						onChange={handleInputChange}
-					/>
-				</div>
-			</div>
+			  </div>
 
 			<Timeframe timeframe="daily" formData={formData} handleTimeframeInputChange={handleTimeframeInputChange}	/>
-			<Timeframe timeframe="weekly" formData={formData} handleTimeframeInputChange={handleTimeframeInputChange}	/>
-			<Timeframe timeframe="monthly" formData={formData} handleTimeframeInputChange={handleTimeframeInputChange}	/>
-			<Dropdown value={formData.color} onChange={handleSelectChange} />
-			<div className="md:w-1/3">
-				<label htmlFor="Image" className="block text-gray-500 font-bold md:text-right mb-1 md:mb-0 pr-4">
-					Upload an image (optional)
+ 			<Timeframe timeframe="weekly" formData={formData} handleTimeframeInputChange={handleTimeframeInputChange}	/>
+ 			<Timeframe timeframe="monthly" formData={formData} handleTimeframeInputChange={handleTimeframeInputChange}	/>
+
+			 <Dropdown value={formData.color} onChange={handleSelectChange} />
+			 
+			  <div>
+				<label htmlFor="image" className="block text-sm font-medium leading-6">
+				 	Image (optional)
 				</label>
-			</div>
-			<div className="md:w-2/3">
-				<input
-					className="bg-gray-200 appearance-none border-2 border-gray-200 rounded w-full py-2 px-4 text-gray-700 leading-tight focus:outline-none focus:bg-white focus:border-purple-500"
+				<div className="mt-2">
+				  <input
 					id="image"
 					name="image"
 					type="text"
-					value={formData.image}
+					value={ formData.image }
 					onChange={handleInputChange}
-				/>
-			</div>
-			<button className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded" onClick={()=>console.log(formData)} type="submit">Submit</button>
-		</form>
+					className="block w-full rounded-md border-0 py-1.5 shadow-sm ring-1 ring-inset ring-gray-300 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm text-black sm:leading-6"
+				  />
+				</div>
+			  </div>
+
+			  <div>
+				<button
+				  type="submit"
+				  onClick={()=>console.log(formData)}
+				  className="flex w-full justify-center rounded-md bg-indigo-600 px-3 py-1.5 text-sm font-semibold leading-6 text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600"
+				>
+				  Submit
+				</button>
+			  </div>
+			</form>
+		  </div>
+		</div>
+	  </>
 	)
-}
+  }
+
 
