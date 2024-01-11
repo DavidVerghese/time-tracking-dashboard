@@ -104,7 +104,7 @@ export default function addCategory() {
  			<Timeframe timeframe="monthly" formData={formData} handleTimeframeInputChange={handleTimeframeInputChange}	/>
 
 			 <Dropdown value={formData.color} onChange={handleSelectChange} />
-			 
+
 			  <div>
 				<label htmlFor="image" className="block text-sm font-medium leading-6">
 				 	Image (optional)
@@ -136,5 +136,7 @@ export default function addCategory() {
 	  </>
 	)
   }
+
+  
 
 
