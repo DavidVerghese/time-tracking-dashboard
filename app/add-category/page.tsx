@@ -1,8 +1,37 @@
 
 "use client"
-import {useState} from 'react'
+import {useState, useEffect} from 'react'
 import Timeframe from './timeframe'
 import Dropdown from './dropdown'
+import { object, string, number, date, InferType } from 'yup';
+
+let timeframeSchema = object({
+	title: string().required().min(3),
+	timeframes: object({
+		daily: object({
+			current: number().required().max(24),
+			previous: number().required().max(24)
+		}),
+		weekly: object({
+			current: number().required().max(168),
+			previous: number().required().max(168)
+		}),
+		monthly: object({
+			current: number().required().max(744),
+			previous: number().required().max(744)
+		})
+	}).required()
+});
+
+type Timeframe = InferType<typeof timeframeSchema>;
+
+const validate = async (data: Timeframe):Promise<Object> => {
+	try {
+	  return await timeframeSchema.validate(data, { abortEarly: false });
+	} catch (error) {
+	  return error;
+	}
+};
 
 interface FormData {
 	title: string;
@@ -25,6 +54,9 @@ interface FormData {
 };
 
 export default function addCategory() {
+
+		const [validationErrors, setValidationErrors] = useState([]);
+
 		const [formData, setFormData] = useState<FormData>({
 		title: '',
 		timeframes: {
@@ -44,6 +76,12 @@ export default function addCategory() {
 		color: '',
 		image: ''
 	});
+
+	useEffect(() => {
+		// const sports = { title: "Sports", timeframes: { daily: { current: 1, previous: 2 }, weekly: { current: 2, previous: 3 }, monthly: { current: 3, previous: 4 } } };
+		const result = validate(formData).then((result) => setValidationErrors(result.errors));
+	}, [formData]);
+	console.log(validationErrors);
 
 	function handleInputChange(event: React.ChangeEvent<HTMLInputElement>) {
 		const { name, value } = event.target;
@@ -67,6 +105,7 @@ export default function addCategory() {
 
 	function handleSubmit(event: React.FormEvent<HTMLFormElement>) {
 		event.preventDefault();
+		console.log(formData);
 		//onSubmit(formData);
 	  }
 
@@ -137,6 +176,6 @@ export default function addCategory() {
 	)
   }
 
-  
+
 
 

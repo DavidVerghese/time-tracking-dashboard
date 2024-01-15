@@ -4,8 +4,10 @@ import Image from "next/image";
 import { usePathname } from "next/navigation";
 
 export default function Sidebar() {
+
 	const pathname = usePathname();
-	function linkColor(timeframe) {
+
+	function linkColor(timeframe: string) {
 		return pathname == timeframe ? `font-semibold text-regular-emphasis` : `text-medium-emphasis`
 	}
 	return (
