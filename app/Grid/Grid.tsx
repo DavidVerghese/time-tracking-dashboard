@@ -1,5 +1,9 @@
+'use client'
 import Category from "../Category/Category";
 import tasksData from '../data.json'
+import { store } from '../store'
+import { Provider } from 'react-redux'
+import Counter from '../features/counter/Counter'
 
 interface GridProps {
 	timeframe: string
@@ -8,12 +12,15 @@ interface GridProps {
 export default function Grid({timeframe}: GridProps) {
 
 	return (
-		<div className="sm:grid grid-cols-2 lg:grid-cols-3 gap-4 sm:w-3/4 sm:h-4/5 m-4">
-			{tasksData.map((category, key) => (
-			<Category category={category} timeframe={timeframe} key={key} />
-				))
-			}
-		</div>
+		<Provider store={store}>
+			<Counter />
+			<div className="sm:grid grid-cols-2 lg:grid-cols-3 gap-4 sm:w-3/4 sm:h-4/5 m-4">
+				{tasksData.map((category, key) => (
+				<Category category={category} timeframe={timeframe} key={key} />
+					))
+				}
+			</div>
+		</Provider>
 	)
 }
 
