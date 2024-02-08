@@ -5,7 +5,6 @@ import Category from '../../Category/Category';
 
 export default function Categores({timeframe}) {
   const categories = useSelector((state: RootState) => state.categories)
-  const dispatch = useDispatch()
 
   return (
     <div className="sm:grid grid-cols-2 lg:grid-cols-3 gap-4 sm:w-3/4 sm:h-4/5 m-4">

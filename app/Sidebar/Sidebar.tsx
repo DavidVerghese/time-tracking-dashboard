@@ -35,6 +35,9 @@ export default function Sidebar() {
 				<Link href="/t/monthly">
 					<p className={`my-3 text-medium-emphasis ${linkColor("/t/monthly")}`}>Monthly</p>
         		</Link>
+				<Link href="/t/add-category">
+					<p>Add a category (redux)</p>
+        		</Link>
 				<Link href="/add-category">
 					<p className={`my-3 text-medium-emphasis ${linkColor("/add-category")}`}>Add a Category</p>
         		</Link>

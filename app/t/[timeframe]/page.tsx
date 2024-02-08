@@ -17,7 +17,7 @@ export async function generateMetadata({ params }: metadataProps) {
 }
 
 export default function timeTracker({ params }) {
-  const acceptableTimeFrames : Array<string> = ['daily', 'weekly', 'monthly'];
+  const acceptableTimeFrames : Array<string> = ['daily', 'weekly', 'monthly', 'add-category'];
   if (acceptableTimeFrames.includes(params.timeframe)) {
     return (<Grid timeframe={params.timeframe} />)
   }

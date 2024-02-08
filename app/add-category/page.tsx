@@ -4,6 +4,7 @@ import { useState, useEffect } from 'react'
 import Timeframe from './timeframe'
 import Dropdown from './dropdown'
 import { object, string, number, date, InferType } from 'yup';
+import { addCategory } from '../features/categories/categoriesSlice';
 
 let timeframeSchema = object({
 	title: string().required().min(3),
@@ -53,8 +54,7 @@ interface FormData {
 	image?: string;
 };
 
-export default function addCategory() {
-
+export default function addCategoryForm() {
 	const [validationErrors, setValidationErrors] = useState<any>();
 	const [submitted, setSubmitted] = useState(false);
 	const [formData, setFormData] = useState<FormData>({
