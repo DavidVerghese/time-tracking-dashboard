@@ -1,21 +1,15 @@
 import React from 'react'
 import type { RootState } from '../../store'
 import { useSelector, useDispatch } from 'react-redux'
-import { addCategories, addCategory } from './categoriesSlice'
-import tasksData from '../../data.json';
-import { useEffect } from 'react';
+import Category from '../../Category/Category';
 
-export default function Timeframe() {
-  //const title = useSelector((state: RootState) => state.timeframe.title)
+export default function Categores({timeframe}) {
   const categories = useSelector((state: RootState) => state.categories)
   const dispatch = useDispatch()
-  // useEffect(() => {
-  //   dispatch(addCategories(tasksData))
-  // }, [dispatch])
+
   return (
-    <div>
-      {categories.map((category, key) => (<p>{category.title}</p>))}
-      <button onClick={()=>dispatch(addCategory({title: 'test', timeframes: {daily: {current: 0, previous: 0}, weekly: {current: 0, previous: 0}, monthly: {current: 0, previous: 0}}}))}>add category</button>
+    <div className="sm:grid grid-cols-2 lg:grid-cols-3 gap-4 sm:w-3/4 sm:h-4/5 m-4">
+      {categories.map((category, key) => (<Category category={category} timeframe={timeframe} key={key} />))}
     </div>
   )
 }
