@@ -1,12 +1,12 @@
 
-const colors: string[] = ["blue", "red", "green", "violet", "orange"];
+const colors: string[] = ["tomato red", "blue", "cherry red", "green", "purple", "green-brown"];
 
 interface DropdownProps {
   value: string;
   onChange: (e: React.ChangeEvent<HTMLSelectElement>) => void;
 }
 
-export default function Dropdown({ value, onChange }: DropdownProps) {
+export default function ColorDropdown({ value, onChange }: DropdownProps) {
   return (
     <>
       <label htmlFor="colors" className="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Select a color</label>

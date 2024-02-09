@@ -4,8 +4,9 @@ import { useState, useEffect } from 'react'
 import type { RootState } from '../../store'
 import { useSelector, useDispatch } from 'react-redux'
 import { addCategory } from './categoriesSlice';
-import Timeframe from '../../add-category/timeframe'
-import Dropdown from '../../add-category/dropdown'
+import Timeframe from './timeframe'
+import ColorDropdown from './colorDropdown'
+import IconDropdown from './iconDropdown'
 import { object, string, number, date, InferType } from 'yup';
 
 let categorySchema = object({
@@ -25,7 +26,7 @@ let categorySchema = object({
 		}).required()
 	}).required(),
 	color: string(),
-	image: string()
+	icon: string()
 });
 
 type Category = InferType<typeof categorySchema>;
@@ -55,7 +56,7 @@ interface FormData {
 		};
 	};
 	color?: string;
-	image?: string;
+	icon?: string;
 };
 
 export default function AddCategoryForm() {
@@ -82,7 +83,7 @@ export default function AddCategoryForm() {
 			}
 		},
 		color: '',
-		image: ''
+		icon: ''
 	});
 
 	useEffect(() => {
@@ -161,23 +162,23 @@ export default function AddCategoryForm() {
 					<Timeframe timeframe="daily" formData={ formData } handleTimeframeInputChange={ handleTimeframeInputChange }	/>
 					<Timeframe timeframe="weekly" formData={ formData } handleTimeframeInputChange={ handleTimeframeInputChange }	/>
 					<Timeframe timeframe="monthly" formData={ formData } handleTimeframeInputChange={ handleTimeframeInputChange }	/>
-					<Dropdown value={ formData.color } onChange={ handleSelectChange } />
-
-					<div>
-						<label htmlFor="image" className="block text-sm font-medium leading-6">
-							Image (optional)
+					<ColorDropdown value={ formData.color } onChange={ handleSelectChange } />
+					<IconDropdown value={ formData.icon } onChange={ handleSelectChange } />
+					{/* <div>
+						<label htmlFor="icon" className="block text-sm font-medium leading-6">
+							Icon (optional)
 						</label>
 						<div className="mt-2">
 							<input
-								id="image"
-								name="image"
+								id="icon"
+								name="icon"
 								type="text"
-								value={ formData.image }
+								value={ formData.icon }
 								onChange={ handleInputChange }
 								className="block w-full rounded-md border-0 py-1.5 shadow-sm ring-1 ring-inset ring-gray-300 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm text-black sm:leading-6"
 							/>
 						</div>
-					</div>
+					</div> */}
 
 					<div>
 						<button
