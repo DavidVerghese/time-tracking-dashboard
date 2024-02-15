@@ -3,7 +3,7 @@ import type { RootState } from '../../store'
 import { useSelector, useDispatch } from 'react-redux'
 import Category from '../../Category/Category';
 
-export default function Categores({timeframe}) {
+export default function Categories({timeframe}) {
   const categories = useSelector((state: RootState) => state.categories)
 
   return (

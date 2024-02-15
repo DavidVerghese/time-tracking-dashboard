@@ -25,8 +25,8 @@ let categorySchema = object({
 			previous: number().required().max(744)
 		}).required()
 	}).required(),
-	color: string(),
-	icon: string()
+	color: string().required(),
+	icon: string().required()
 });
 
 type Category = InferType<typeof categorySchema>;
@@ -86,16 +86,6 @@ export default function AddCategoryForm() {
 		icon: ''
 	});
 
-	useEffect(() => {
-		const result = validate(formData).then((result)=> {
-			if (result instanceof Error) {
-				setValidationErrors(result);
-			} else {
-				setValidationErrors("")
-			}
-		});
-	}, [submitted]);
-
 	function handleInputChange(event: React.ChangeEvent<HTMLInputElement>) {
 		const { name, value } = event.target;
 		setFormData({ ...formData, [name]: value });
@@ -119,16 +109,14 @@ export default function AddCategoryForm() {
 	function handleSubmit(event: React.FormEvent<HTMLFormElement>){
 		event.preventDefault();
 		setSubmitted(!submitted);
-		if (!validationErrors) {
-			// console.log('no errors occured')
-			// console.log(formData)
-			dispatch(addCategory(formData))
-		}
-		else {
-			// console.log('errors occured')
-			// console.log('validationErrors', validationErrors.errors)
-			// console.log('formData', formData)
-		}
+		const result = validate(formData).then((result)=> {
+			if (result instanceof Error) {
+				setValidationErrors(result)
+			} else {
+				setValidationErrors("")
+				dispatch(addCategory(formData))
+			}
+		});
 	}
 
     return (
@@ -142,7 +130,7 @@ export default function AddCategoryForm() {
             </div>
 
 			<div className="mt-10 sm:mx-auto sm:w-full sm:max-w-sm">
-				<form className="space-y-6" action="#" method="POST" onClick={e=>handleSubmit(e)}>
+				<form className="space-y-6" action="#" method="POST" onSubmit={handleSubmit}>
 					<div>
 						<label htmlFor="title" className="block text-sm font-medium leading-6">
 							Title
@@ -153,7 +141,7 @@ export default function AddCategoryForm() {
 							name="title"
 							type="text"
 							value={ formData.title }
-							onChange={ handleInputChange }
+							onChange={ (e)=>handleInputChange(e) }
 							required
 							className="block w-full rounded-md border-0 py-1.5 shadow-sm ring-1 ring-inset ring-gray-300 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm text-black sm:leading-6"
 						/>
@@ -164,21 +152,6 @@ export default function AddCategoryForm() {
 					<Timeframe timeframe="monthly" formData={ formData } handleTimeframeInputChange={ handleTimeframeInputChange }	/>
 					<ColorDropdown value={ formData.color } onChange={ handleSelectChange } />
 					<IconDropdown value={ formData.icon } onChange={ handleSelectChange } />
-					{/* <div>
-						<label htmlFor="icon" className="block text-sm font-medium leading-6">
-							Icon (optional)
-						</label>
-						<div className="mt-2">
-							<input
-								id="icon"
-								name="icon"
-								type="text"
-								value={ formData.icon }
-								onChange={ handleInputChange }
-								className="block w-full rounded-md border-0 py-1.5 shadow-sm ring-1 ring-inset ring-gray-300 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm text-black sm:leading-6"
-							/>
-						</div>
-					</div> */}
 
 					<div>
 						<button
