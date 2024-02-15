@@ -131,6 +131,7 @@ export default function AddCategoryForm() {
 
 			<div className="mt-10 sm:mx-auto sm:w-full sm:max-w-sm">
 				<form className="space-y-6" action="#" method="POST" onSubmit={handleSubmit}>
+					{ validationErrors ? validationErrors.errors.map((error, index) => (<div key={ index } className="text-red-500 text-center">{ error }</div>)) : "" }
 					<div>
 						<label htmlFor="title" className="block text-sm font-medium leading-6">
 							Title
@@ -160,7 +161,6 @@ export default function AddCategoryForm() {
 						>
 						Submit
 						</button>
-						{ validationErrors ? validationErrors.errors.map((error, index) => (<div key={ index } className="text-red-500 text-center">{ error }</div>)) : "" }
 					</div>
 				</form>
 			</div>
