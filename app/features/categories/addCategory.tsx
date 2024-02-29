@@ -121,7 +121,7 @@ export default function AddCategoryForm() {
 
     return (
 
-    <div>
+    <div className="w-full">
         <div className="flex min-h-full flex-1 flex-col px-6">
             <div className="sm:mx-auto sm:w-full sm:max-w-sm">
                 <h2 className="mt-10 text-center text-2xl font-bold leading-9 tracking-tight">
@@ -130,37 +130,40 @@ export default function AddCategoryForm() {
             </div>
 
 			<div className="mt-10 sm:mx-auto sm:w-full sm:max-w-sm">
-				<form className="space-y-6" action="#" method="POST" onSubmit={handleSubmit}>
-					{ validationErrors ? validationErrors.errors.map((error, index) => (<div key={ index } className="text-red-500 text-center">{ error }</div>)) : "" }
+				<form className="space-y-6 grid grid-cols-2" action="#" method="POST" onSubmit={handleSubmit}>
 					<div>
-						<label htmlFor="title" className="block text-sm font-medium leading-6">
-							Title
-						</label>
-						<div className="mt-2">
-						<input
-							id="title"
-							name="title"
-							type="text"
-							value={ formData.title }
-							onChange={ (e)=>handleInputChange(e) }
-							required
-							className="block w-full rounded-md border-0 py-1.5 shadow-sm ring-1 ring-inset ring-gray-300 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm text-black sm:leading-6"
-						/>
+						{ validationErrors ? validationErrors.errors.map((error, index) => (<div key={ index } className="text-red-500 text-center">{ error }</div>)) : "" }
+						<div>
+							<label htmlFor="title" className="block text-sm font-medium leading-6">
+								Title
+							</label>
+							<div className="mt-2">
+							<input
+								id="title"
+								name="title"
+								type="text"
+								value={ formData.title }
+								onChange={ (e)=>handleInputChange(e) }
+								required
+								className="block w-full rounded-md border-0 py-1.5 shadow-sm ring-1 ring-inset ring-gray-300 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm text-black sm:leading-6"
+							/>
+							</div>
 						</div>
+						<ColorDropdown value={ formData.color } onChange={ handleSelectChange } />
+						<IconDropdown value={ formData.icon } onChange={ handleSelectChange } />
+						<Timeframe timeframe="daily" formData={ formData } handleTimeframeInputChange={ handleTimeframeInputChange }	/>
 					</div>
-					<Timeframe timeframe="daily" formData={ formData } handleTimeframeInputChange={ handleTimeframeInputChange }	/>
-					<Timeframe timeframe="weekly" formData={ formData } handleTimeframeInputChange={ handleTimeframeInputChange }	/>
-					<Timeframe timeframe="monthly" formData={ formData } handleTimeframeInputChange={ handleTimeframeInputChange }	/>
-					<ColorDropdown value={ formData.color } onChange={ handleSelectChange } />
-					<IconDropdown value={ formData.icon } onChange={ handleSelectChange } />
-
 					<div>
-						<button
-						type="submit"
-						className="flex w-full justify-center rounded-md bg-indigo-600 px-3 py-1.5 text-sm font-semibold leading-6 text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600"
-						>
-						Submit
-						</button>
+						<Timeframe timeframe="weekly" formData={ formData } handleTimeframeInputChange={ handleTimeframeInputChange }	/>
+						<Timeframe timeframe="monthly" formData={ formData } handleTimeframeInputChange={ handleTimeframeInputChange }	/>
+						<div>
+							<button
+							type="submit"
+							className="flex w-full justify-center rounded-md bg-indigo-600 px-3 py-1.5 text-sm font-semibold leading-6 text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600"
+							>
+							Submit
+							</button>
+						</div>
 					</div>
 				</form>
 			</div>
