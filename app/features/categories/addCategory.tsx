@@ -129,9 +129,9 @@ export default function AddCategoryForm() {
                 </h2>
             </div>
 
-			<div className="mt-10 sm:mx-auto sm:w-full sm:max-w-sm">
-				<form className="space-y-6 grid grid-cols-2" action="#" method="POST" onSubmit={handleSubmit}>
-					<div>
+			<div className="mt-10 sm:mx-auto sm:w-full">
+				<form className="grid sm:grid-cols-2" action="#" method="POST" onSubmit={handleSubmit}>
+					<div className="px-2">
 						{ validationErrors ? validationErrors.errors.map((error, index) => (<div key={ index } className="text-red-500 text-center">{ error }</div>)) : "" }
 						<div>
 							<label htmlFor="title" className="block text-sm font-medium leading-6">
@@ -153,10 +153,10 @@ export default function AddCategoryForm() {
 						<IconDropdown value={ formData.icon } onChange={ handleSelectChange } />
 						<Timeframe timeframe="daily" formData={ formData } handleTimeframeInputChange={ handleTimeframeInputChange }	/>
 					</div>
-					<div>
+					<div className="px-2">
 						<Timeframe timeframe="weekly" formData={ formData } handleTimeframeInputChange={ handleTimeframeInputChange }	/>
 						<Timeframe timeframe="monthly" formData={ formData } handleTimeframeInputChange={ handleTimeframeInputChange }	/>
-						<div>
+						<div className="mt-3">
 							<button
 							type="submit"
 							className="flex w-full justify-center rounded-md bg-indigo-600 px-3 py-1.5 text-sm font-semibold leading-6 text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600"
