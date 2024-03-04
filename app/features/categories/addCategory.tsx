@@ -143,7 +143,7 @@ export default function AddCategoryForm() {
 		event.preventDefault();
 		const result = validate(formData).then((result)=> {
 			if (result instanceof Error) {
-				function findError(errors: any, key: string) {
+				const findError = function(errors: any, key: string) {
 					return errors.find((error: any) => error.key === key)?.message || '';
 				}
 				setValidationErrors({
