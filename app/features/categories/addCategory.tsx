@@ -7,6 +7,7 @@ import Timeframe from './timeframe'
 import ColorDropdown from './colorDropdown'
 import IconDropdown from './iconDropdown'
 import { object, string, number, InferType } from 'yup';
+import { error } from 'console';
 
 let categorySchema = object({
 	title: string().required().min(3, { "key": "title", "field": "title", "message": "must be more than 2 characters" }),
@@ -143,6 +144,7 @@ export default function AddCategoryForm() {
 		event.preventDefault();
 		const result = validate(formData).then((result)=> {
 			if (result instanceof Error) {
+				console.log('hello')
 				const findError = function(errors: any, key: string) {
 					return errors.find((error: any) => error.key === key)?.message || '';
 				}
