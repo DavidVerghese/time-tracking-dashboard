@@ -19,7 +19,7 @@ export interface CategoryState {
 		};
 	};
 	color?: string;
-	image?: string;
+	icon?: string;
 }
 
 const initialState: Array<CategoryState> = [...tasksData]

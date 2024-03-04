@@ -1,6 +1,3 @@
-
-
-
 export default function Timeframe({timeframe, formData, handleTimeframeInputChange, errors}) {
 	return (
 		<>
