@@ -1,32 +1,31 @@
 'use client'
 import React from 'react'
-import { useState, useEffect } from 'react'
-import type { RootState } from '../../store'
-import { useSelector, useDispatch } from 'react-redux'
+import { useState } from 'react'
+import { useDispatch } from 'react-redux'
 import { addCategory } from './categoriesSlice';
 import Timeframe from './timeframe'
 import ColorDropdown from './colorDropdown'
 import IconDropdown from './iconDropdown'
-import { object, string, number, date, InferType } from 'yup';
+import { object, string, number, InferType } from 'yup';
 
 let categorySchema = object({
-	title: string().required().min(3),
+	title: string().required().min(3, { "key": "title", "field": "title", "message": "must be more than 2 characters" }),
 	timeframes: object({
 		daily: object({
-			current: number().required().max(24),
-			previous: number().required().max(24)
+			current: number().required().max(24, { "key": "timeframes.daily.current", "field": "Today's hours", "message": "cannot be over 24" }),
+			previous: number().required().max(24, { "key": "timeframes.daily.previous", "field": "Yesterday's hours", "message": "cannot be over 24" })
 		}).required(),
 		weekly: object({
-			current: number().required().max(168),
-			previous: number().required().max(168)
+			current: number().required().max(168, { "key": "timeframes.weekly.current", "field": "This week's hours", "message": "cannot be over 168" }),
+			previous: number().required().max(168, { "key": "timeframes.weekly.previous", "field": "Last week's hours", "message": "cannot be over 168" })
 		}).required(),
 		monthly: object({
-			current: number().required().max(744),
-			previous: number().required().max(744)
+			current: number().required().max(744, { "key": "timeframes.monthly.current", "field": "This month's hours", "message": "cannot be over 744" }),
+			previous: number().required().max(744, { "key": "timeframes.monthly.previous", "field": "Last month's hours", "message": "cannot be over 744" })
 		}).required()
 	}).required(),
-	color: string().required(),
-	icon: string().required()
+	color: string().required({ "key": "color", "field": "color", "message": "must be present" }),
+	icon: string().required({ "key": "icon", "field": "icon", "message": "must be present" })
 });
 
 type Category = InferType<typeof categorySchema>;
@@ -59,14 +58,48 @@ interface FormData {
 	icon?: string;
 };
 
+interface FormErrors{
+	title: string;
+	timeframes: {
+		daily: {
+			current: string;
+			previous: string;
+		};
+		weekly: {
+			current: string;
+			previous: string;
+		};
+		monthly: {
+			current: string;
+			previous: string;
+		};
+	};
+	color?: string;
+	icon?: string;
+};
+
 export default function AddCategoryForm() {
-
-    const categories = useSelector((state: RootState) => state.categories)
-    const dispatch = useDispatch()
-	const [validationErrors, setValidationErrors] = useState<any>();
-	const [submitted, setSubmitted] = useState(false);
-
-    const [formData, setFormData] = useState<FormData>({
+	const dispatch = useDispatch()
+	const [validationErrors, setValidationErrors] = useState<FormErrors>({
+		title: '',
+		timeframes: {
+			daily: {
+				current: '',
+				previous: ''
+			},
+			weekly: {
+				current: '',
+				previous: ''
+			},
+			monthly: {
+				current: '',
+				previous: ''
+			}
+		},
+		color: '',
+		icon: ''
+	});
+	const [formData, setFormData] = useState<FormData>({
 		title: '',
 		timeframes: {
 			daily: {
@@ -108,31 +141,87 @@ export default function AddCategoryForm() {
 
 	function handleSubmit(event: React.FormEvent<HTMLFormElement>){
 		event.preventDefault();
-		setSubmitted(!submitted);
 		const result = validate(formData).then((result)=> {
 			if (result instanceof Error) {
-				setValidationErrors(result)
+				function findError(errors: any, key: string) {
+					return errors.find((error: any) => error.key === key)?.message || '';
+				}
+				setValidationErrors({
+					title: findError(result.errors, "title"),
+					timeframes: {
+						daily: {
+							current: findError(result.errors, "timeframes.daily.current"),
+							previous: findError(result.errors, "timeframes.daily.previous")
+						},
+						weekly: {
+							current: findError(result.errors, "timeframes.weekly.current"),
+							previous: findError(result.errors, "timeframes.weekly.previous")
+						},
+						monthly: {
+							current: findError(result.errors, "timeframes.monthly.current"),
+							previous: findError(result.errors, "timeframes.monthly.previous")
+						}
+					},
+					color: findError(result.errors, "color"),
+					icon: findError(result.errors, "icon")
+				});
 			} else {
-				setValidationErrors("")
+				setValidationErrors({
+					title: '',
+					timeframes: {
+						daily: {
+							current: '',
+							previous: ''
+						},
+						weekly: {
+							current: '',
+							previous: ''
+						},
+						monthly: {
+							current: '',
+							previous: ''
+						}
+					},
+					color: '',
+					icon: ''
+				});
+				setFormData({
+					title: '',
+					timeframes: {
+						daily: {
+							current: 0,
+							previous: 0
+						},
+						weekly: {
+							current: 0,
+							previous: 0
+						},
+						monthly: {
+							current: 0,
+							previous: 0
+						}
+					},
+					color: '',
+					icon: ''
+				});
 				dispatch(addCategory(formData))
 			}
 		});
 	}
 
-    return (
+	return (
 
-    <div className="w-full">
-        <div className="flex min-h-full flex-1 flex-col px-6">
-            <div className="sm:mx-auto sm:w-full sm:max-w-sm">
-                <h2 className="mt-10 text-center text-2xl font-bold leading-9 tracking-tight">
-                Add a new category
-                </h2>
-            </div>
+	<div className="w-full">
+		<div className="flex min-h-full flex-1 flex-col px-6">
+			<div className="sm:mx-auto sm:w-full sm:max-w-sm">
+				<h2 className="mt-10 text-center text-2xl font-bold leading-9 tracking-tight">
+				Add a new category
+				</h2>
+			</div>
 
 			<div className="mt-10 sm:mx-auto sm:w-full">
 				<form className="grid sm:grid-cols-2" action="#" method="POST" onSubmit={handleSubmit}>
 					<div className="px-2">
-						{ validationErrors ? validationErrors.errors.map((error, index) => (<div key={ index } className="text-red-500 text-center">{ error }</div>)) : "" }
 						<div>
 							<label htmlFor="title" className="block text-sm font-medium leading-6">
 								Title
@@ -147,15 +236,16 @@ export default function AddCategoryForm() {
 								required
 								className="block w-full rounded-md border-0 py-1.5 shadow-sm ring-1 ring-inset ring-gray-300 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm text-black sm:leading-6"
 							/>
+							{ validationErrors.title ? <p className="text-red-500 text-center">{ validationErrors.title }</p> : "" }
 							</div>
 						</div>
-						<ColorDropdown value={ formData.color } onChange={ handleSelectChange } />
-						<IconDropdown value={ formData.icon } onChange={ handleSelectChange } />
-						<Timeframe timeframe="daily" formData={ formData } handleTimeframeInputChange={ handleTimeframeInputChange }	/>
+						<ColorDropdown value={ formData.color } onChange={ handleSelectChange } error={ validationErrors.color } />
+						<IconDropdown value={ formData.icon } onChange={ handleSelectChange } error={ validationErrors.icon } />
+						<Timeframe timeframe="daily" formData={ formData } handleTimeframeInputChange={ handleTimeframeInputChange } errors={ validationErrors.timeframes.daily }	/>
 					</div>
 					<div className="px-2">
-						<Timeframe timeframe="weekly" formData={ formData } handleTimeframeInputChange={ handleTimeframeInputChange }	/>
-						<Timeframe timeframe="monthly" formData={ formData } handleTimeframeInputChange={ handleTimeframeInputChange }	/>
+						<Timeframe timeframe="weekly" formData={ formData } handleTimeframeInputChange={ handleTimeframeInputChange } errors={ validationErrors.timeframes.weekly }/>
+						<Timeframe timeframe="monthly" formData={ formData } handleTimeframeInputChange={ handleTimeframeInputChange } errors={ validationErrors.timeframes.monthly }/>
 						<div className="mt-3">
 							<button
 							type="submit"
@@ -167,7 +257,7 @@ export default function AddCategoryForm() {
 					</div>
 				</form>
 			</div>
-        </div>
-    </div>
-    )
-  }
+		</div>
+	</div>
+	)
+}
