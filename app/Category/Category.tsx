@@ -3,7 +3,7 @@ import { CategoryState } from "../../types";
 interface CategoryProps {
   category: CategoryState;
   timeframe: string;
-  key: string;
+  key: number;
 }
 
 
