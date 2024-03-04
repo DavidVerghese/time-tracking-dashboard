@@ -1,26 +1,26 @@
 import { createSlice } from '@reduxjs/toolkit'
 import type { PayloadAction } from '@reduxjs/toolkit'
 import tasksData from '../../data.json'
-
-export interface CategoryState {
-	title: string;
-	timeframes: {
-		daily: {
-			current: number;
-			previous: number;
-		};
-		weekly: {
-			current: number;
-			previous: number;
-		};
-		monthly: {
-			current: number;
-			previous: number;
-		};
-	};
-	color?: string;
-	icon?: string;
-}
+import { CategoryState } from '../../../types'
+// export interface CategoryState {
+// 	title: string;
+// 	timeframes: {
+// 		daily: {
+// 			current: number;
+// 			previous: number;
+// 		};
+// 		weekly: {
+// 			current: number;
+// 			previous: number;
+// 		};
+// 		monthly: {
+// 			current: number;
+// 			previous: number;
+// 		};
+// 	};
+// 	color?: string;
+// 	icon?: string;
+// }
 
 const initialState: Array<CategoryState> = [...tasksData]
 

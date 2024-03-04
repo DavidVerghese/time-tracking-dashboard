@@ -1,25 +1,8 @@
-interface CategoryProps {
-  category: {
-    title: string;
-    timeframes: {
-      daily: {
-        current: number;
-        previous: number;
-      };
-      weekly: {
-        current: number;
-        previous: number;
-      };
-      monthly: {
-        current: number;
-        previous: number;
-      };
-    };
-    color: string;
-    icon: string;
-  };
-  timeframe: string;
+import { CategoryState } from "../../types";
 
+interface CategoryProps {
+  category: CategoryState;
+  timeframe: string;
   key: string;
 }
 
