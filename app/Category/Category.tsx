@@ -73,6 +73,13 @@ export default function Category({ category, timeframe, key }: CategoryProps) {
       </svg>
     ),
   };
+
+  const previousTimePeriodMap = {
+    'daily': 'Yesterday',
+    'weekly': 'Last week',
+    'monthly': 'Last month'
+  }
+
   return (
     <section
       key={key}
@@ -98,7 +105,7 @@ export default function Category({ category, timeframe, key }: CategoryProps) {
           {category.timeframes[timeframe].current} hrs
         </p>
         <p className="text-medium-emphasis">
-          Last - {category.timeframes[timeframe].previous}hrs
+          {previousTimePeriodMap[timeframe]} - {category.timeframes[timeframe].previous}hrs
         </p>
       </div>
     </section>
